@@ -78,17 +78,24 @@ describe Board do
     end
   end
 
-
-    describe '#get_square' do
-        it "returns the correct square" do
-            square = my_board.get_square(4, 7)
-            expect([square.row, square.col]).to eq([4, 7])
-        end
-
-        it "returns the correct square" do
-            square = my_board.get_square(1, 8)
-            expect([square.row, square.col]).to eq([1, 8])
-        end
-
+  describe '#get_square' do
+    it "returns the correct square" do
+        square = my_board.get_square(4, 7)
+        expect([square.row, square.col]).to eq([4, 7])
     end
+
+    it "returns the correct square" do
+        square = my_board.get_square(1, 8)
+        expect([square.row, square.col]).to eq([1, 8])
+    end
+  end
+
+  describe '#update_board' do
+    it "updates the board with the correct value when valid inputs are given" do
+        my_board.update_board(3, 6, "update_value!!!")
+        square = my_board.get_square(3, 6)
+        
+        expect(square.current_piece).to eq("update_value!!!")
+    end
+  end
 end

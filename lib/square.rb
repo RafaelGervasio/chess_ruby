@@ -8,5 +8,4 @@ class Square
 		@current_piece = current_piece
 	end
 
-
 end

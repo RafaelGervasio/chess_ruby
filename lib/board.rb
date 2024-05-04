@@ -80,6 +80,19 @@ class Board
 	end
 
 
+	def update_board(row, col, new_piece)
+		if ( ( col.between?(1, 8) ) && ( row.between?(1, 8) ) )
+			square_to_be_updated = self.get_square(row, col)
+			square_to_be_updated.current_piece = new_piece
+		else
+			puts "an error occured in update_board"
+			puts "col value: #{col}"
+			puts "row value: #{row}"
+			nil
+		end
+	end
+
+
 end
 
 
