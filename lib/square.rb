@@ -1,3 +1,5 @@
+require_relative 'piece.rb'
+
 class Square
 	attr_accessor :row, :col, :current_piece
 

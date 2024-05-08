@@ -92,9 +92,9 @@ describe Board do
 
   describe '#update_board' do
     it "updates the board with the correct value when valid inputs are given" do
-        my_board.update_board(3, 6, "update_value!!!")
         square = my_board.get_square(3, 6)
-        
+
+        my_board.update_board(square, "update_value!!!")    
         expect(square.current_piece).to eq("update_value!!!")
     end
   end

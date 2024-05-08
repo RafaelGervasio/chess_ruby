@@ -69,9 +69,8 @@ class Board
 
 
 	def get_square(row, col)
-		# Row value is checked in get row.
-		row_array = self.get_row(row)
-		if col.between?(1, 8)
+		if ( ( col.between?(1, 8) ) && ( row.between?(1, 8) ) )
+			row_array = self.get_row(row)
 			return row_array[col - 1]
 		else
 			puts "get_square returned nil"
@@ -80,16 +79,8 @@ class Board
 	end
 
 
-	def update_board(row, col, new_piece)
-		if ( ( col.between?(1, 8) ) && ( row.between?(1, 8) ) )
-			square_to_be_updated = self.get_square(row, col)
-			square_to_be_updated.current_piece = new_piece
-		else
-			puts "an error occured in update_board"
-			puts "col value: #{col}"
-			puts "row value: #{row}"
-			nil
-		end
+	def update_board(square, new_piece)
+		square.current_piece = new_piece
 	end
 
 
