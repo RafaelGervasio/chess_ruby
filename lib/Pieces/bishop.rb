@@ -1,11 +1,16 @@
-require_relative '../board'
+require_relative '../piece'
 
 class Bishop < Piece
-
-
-	def initialize(color, current_square)
-		super(color, 'Bishop', current_square)
-	end
+    WHITE_BISHOP_UNICODE = "\u2657"
+    BLACK_BISHOP_UNICODE = "\u265D"
+  
+    def initialize(color, current_square)
+        if color == 'white'
+            super(color, 'bishop', current_square, WHITE_BISHOP_UNICODE)
+        else
+            super(color, 'bishop', current_square, BLACK_BISHOP_UNICODE)
+        end
+    end
 
 
 	def valid_movement_pattern?(starting_square, ending_square)
@@ -26,3 +31,5 @@ class Bishop < Piece
 
 
 end
+
+

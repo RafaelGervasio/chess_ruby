@@ -98,4 +98,14 @@ describe Board do
         expect(square.current_piece).to eq("update_value!!!")
     end
   end
+
+  describe '#fill_board' do
+    subject(:filled_board) { described_class.new }
+    
+    it "fill the prooper pieces on the board" do
+        #write me the code to check that the board is preoperly filled
+    end
+  end
+
+
 end
