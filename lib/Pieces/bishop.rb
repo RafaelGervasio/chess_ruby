@@ -15,7 +15,7 @@ class Bishop < Piece
 
 	def valid_movement_pattern?(starting_square, ending_square)
 		if starting_square.nil? || ending_square.nil?
-			puts "valid_movement_pattern was called with a nil square"
+			puts "valid_movement_pattern in bishop was called with a nil square"
 			return nil
 		else
 			change_in_row = (ending_square.row - starting_square.row).abs
