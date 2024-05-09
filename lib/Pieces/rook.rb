@@ -11,4 +11,19 @@ class Rook < Piece
             super(color, 'rook', current_square, BLACK_ROOK_UNICODE)
         end
     end
+
+
+    def valid_movement_pattern?(starting_square, ending_square)
+        if starting_square.nil? || ending_square.nil?
+            puts "valid_movement_pattern was called with a nil square"
+            return nil
+        else
+            horizontal_movement = ( ( starting_square.row != ending_square.row ) && 
+                ( starting_square.col == ending_square.col ) )
+            vertical_movement = ( ( starting_square.row == ending_square.row ) && 
+                ( starting_square.col != ending_square.col ) )
+
+            return (horizontal_movement || vertical_movement)
+        end
+    end
 end
