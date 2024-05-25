@@ -152,5 +152,5 @@ class Board
 end
 
 
-board = Board.new()
+# board = Board.new()
 # board.display_board
