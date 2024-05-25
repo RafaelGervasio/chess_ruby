@@ -37,7 +37,7 @@ class Rook < Piece
             return nil
         else
             if starting_square.row == ending_square.row
-                col_step = (ending_square.col > > starting_square.col) ? 1 : -1
+                col_step = (ending_square.col > starting_square.col) ? 1 : -1
 
                 in_between_row, in_between_col = starting_square.row, starting_square.col + col_step
 
@@ -48,7 +48,7 @@ class Rook < Piece
 
                 return false
             else
-                row_step = (ending_square.row > > starting_square.row) ? 1 : -1
+                row_step = (ending_square.row > starting_square.row) ? 1 : -1
 
                 in_between_row, in_between_col = starting_square.row + row_step, starting_square.col
 
@@ -60,12 +60,5 @@ class Rook < Piece
                 return false
             end
         end
-
-
-
-
-
-
-            else
-        end
+    end
 end
