@@ -45,7 +45,7 @@ describe Rook do
             my_board.get_square(5, 7).current_piece = rook_in_the_way
             expect(my_rook.jumps_over_piece?(my_board, my_board.get_square(4, 7), my_board.get_square(7, 7))).to eq(true)
             my_board.get_square(5, 7).current_piece = nil
-        end
+        end 
     end
 
     context "when there is no piece to jump over" do
@@ -54,7 +54,7 @@ describe Rook do
       end
 
       it 'returns false for change in row' do
-        expect(my_rook.jumps_over_piece?(my_board, my_board.get_square(4, 7), my_board.get_square(7, 7))).to eq(false)
+        expect(my_rook.jumps_over_piece?(my_board, my_board.get_square(4, 7), my_board.get_square(6, 7))).to eq(false)
       end
     end
   end
