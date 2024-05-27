@@ -7,8 +7,8 @@ describe Bishop do
 
   describe '#valid_movement_pattern?' do
     context 'when square is invalid' do
-      it "returns nil" do
-        expect(my_bishop.valid_movement_pattern?(my_board.get_square(5, 4), my_board.get_square(8, 9))).to eq(nil)
+      it "raises an error" do
+        expect { my_bishop.valid_movement_pattern?(my_board.get_square(5, 4), my_board.get_square(8, 9)) }.to raise_error(StandardError)
       end
     end
 
@@ -28,6 +28,12 @@ describe Bishop do
 
   describe '#jumps_over_piece?' do
     subject(:bishop_in_the_way) { described_class.new('black', my_board.get_square(5, 5)) }
+
+    context "when non valid pattern is called" do
+        it "raises an error" do
+            expect { my_bishop.jumps_over_piece?(my_board, my_board.get_square(3, 3), my_board.get_square(5, 6)) }.to raise_error(StandardError)
+        end
+    end
 
     context 'when there is a piece to jump over' do
         it "returns true for positive row and positive col step" do

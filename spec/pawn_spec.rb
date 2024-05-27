@@ -108,7 +108,7 @@ describe Pawn do
         end
     end
 
-    describe "#jumps_over_piece" do
+    describe "#jumps_over_piece?" do
         subject(:my_board) { Board.new }
         subject(:white_pawn) { described_class.new('white', my_board.get_square(2, 7)) }
         subject(:black_pawn) { described_class.new('black', my_board.get_square(7, 3)) }

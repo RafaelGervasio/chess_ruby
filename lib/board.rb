@@ -34,7 +34,7 @@ class Board
 		@grid = grid
 	end
 
-
+	
 	def fill_board
 
 		def place_piece(square_to_fill, color, piece_type)
@@ -107,12 +107,8 @@ class Board
 	end
 
 	def get_row(row)
-		if row.between?(1, 8)
-			return @grid[8 - row]
-		else
-			puts "get_row returned nil"
-			nil
-		end
+		return @grid[8 - row] if row.between?(1, 8)
+		raise StandardError, "get_row was called with unbounded values"
 	end
 
 
@@ -127,8 +123,7 @@ class Board
 			
 			return column
 		else
-			puts "get_col returned nil"
-			return nil
+			raise StandardError, "get_col was called with unbounded values"
 		end
 	end
 
@@ -138,8 +133,7 @@ class Board
 			row_array = self.get_row(row)
 			return row_array[col - 1]
 		else
-			puts "get_square returned nil"
-			return nil
+			raise StandardError, "get_square was called with unbounded values"
 		end
 	end
 

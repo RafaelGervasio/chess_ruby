@@ -7,8 +7,8 @@ describe Knight do
 
   describe '#valid_movement_pattern?' do
     context 'when square is invalid' do
-      it "returns nil" do
-        expect(my_knight.valid_movement_pattern?(my_board.get_square(8, 4), my_board.get_square(9, 6))).to eq(nil)
+      it "returns an error" do
+        expect { my_knight.valid_movement_pattern?(my_board.get_square(8, 4), my_board.get_square(9, 6)) }.to raise_error(StandardError)
       end
     end
 

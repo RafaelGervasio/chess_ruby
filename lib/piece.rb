@@ -10,21 +10,14 @@ class Piece
 		@symbol = symbol
 	end
 
+
 	def valid_movement_pattern?
 	end
 
+
 	def jumps_over_piece?
-		
+		#I'm doing this so for the pieces I haven't defined it in (king and knight since it doesn't apply) it returns false
+		return false
 	end
 
-
 end
-
-
-
-#implement it on each piece and have piece do the calling
-
-#get player input
-#tranlate the input into a move
-#move_validator.valid_move?(starting_square.current_piece, starting_square, ending_square)
-	#then the move validator will call each of the methods on Piece and return a BOOL.

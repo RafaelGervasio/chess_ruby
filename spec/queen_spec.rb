@@ -8,7 +8,7 @@ describe Queen do
   describe '#valid_movement_pattern?' do
     context 'when square is invalid' do
       it "returns nil" do
-        expect(my_queen.valid_movement_pattern?(my_board.get_square(5, 4), my_board.get_square(8, 9))).to eq(nil)
+        expect{ my_queen.valid_movement_pattern?(my_board.get_square(5, 4), my_board.get_square(8, 9)) }.to raise_error(StandardError)
       end
     end
 
