@@ -107,4 +107,47 @@ describe Pawn do
             end
         end
     end
+
+    describe "#jumps_over_piece" do
+        subject(:my_board) { Board.new }
+        subject(:white_pawn) { described_class.new('white', my_board.get_square(2, 7)) }
+        subject(:black_pawn) { described_class.new('black', my_board.get_square(7, 3)) }
+        
+        subject(:pawn_in_the_way_of_white) { described_class.new('white', my_board.get_square(3, 7)) }
+        subject(:pawn_in_the_way_of_black) { described_class.new('white', my_board.get_square(6, 3)) }
+
+        context "when a WHITE pawn moves 2 rows up and there IS a piece in between" do
+            it "returns true" do
+                my_board.get_square(3, 7).current_piece = pawn_in_the_way_of_white
+                expect(white_pawn.jumps_over_piece?(my_board, my_board.get_square(2, 7), my_board.get_square(4, 7))).to be(true)
+                my_board.get_square(3, 7).current_piece = nil
+            end
+        end
+
+        context "when a BLACK pawn moves 2 rows up and there IS a piece in between" do
+            it "returns true" do
+                my_board.get_square(6, 3).current_piece = pawn_in_the_way_of_black
+                expect(black_pawn.jumps_over_piece?(my_board, my_board.get_square(7, 3), my_board.get_square(5, 3))).to be(true)
+                my_board.get_square(6, 3).current_piece = nil
+            end
+        end
+
+        context "when a WHITE pawn moves 2 rows up and there NOT a piece in between" do
+            it "returns false" do
+                expect(white_pawn.jumps_over_piece?(my_board, my_board.get_square(2, 1), my_board.get_square(4, 1))).to be(false)
+            end
+        end
+
+        context "when a BLACK pawn moves 2 rows up and there is NOT a piece in between" do
+            it "returns false" do
+                expect(black_pawn.jumps_over_piece?(my_board, my_board.get_square(7, 1), my_board.get_square(5, 1))).to be(false)
+            end
+        end
+
+        context "when pawn doesn't move 2 rows up" do
+            it "returns false" do
+                expect(white_pawn.jumps_over_piece?(my_board, my_board.get_square(2, 1), my_board.get_square(3, 1))).to be(false)
+            end
+        end
+    end
 end
