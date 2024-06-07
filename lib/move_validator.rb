@@ -4,8 +4,8 @@ class MoveValidator
 
 	end
 
-	def jumps_over_piece?
-	end
+
+
 
 	def valid_move?(board, starting_square, ending_square)
 		#VERY DEEP MODULE!
@@ -17,6 +17,11 @@ class MoveValidator
 			(not piece_to_move.jumps_over_piece?(board, starting_square, ending_square)) &&			
 
 	end
+
+
+	
+
+
 
 
 end

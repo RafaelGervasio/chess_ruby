@@ -79,4 +79,37 @@ describe Bishop do
         end
     end
   end
+
+  describe "lands_on_friendly_piece?" do
+    subject(:same_color_bishop_on_landing_square) { described_class.new('white', my_board.get_square(6, 6)) }
+    subject(:opposite_color_bishop_on_landing_square) { described_class.new('black', my_board.get_square(5, 5)) }
+    
+    context "when ending square is invalid" do
+        it "raises an error" do
+            expect{ (my_bishop.lands_on_friendly_piece?(my_board.get_square(5, 9))) }.to raise_error(StandardError)
+        end
+    end
+
+    context "when it DOES land on a friendly piece" do
+        it "returns true" do
+            my_board.get_square(6, 6).current_piece = same_color_bishop_on_landing_square
+            expect(my_bishop.lands_on_friendly_piece?(my_board.get_square(6, 6))).to be(true)
+            my_board.get_square(6, 6).current_piece = nil
+        end
+    end
+    
+    context "when it lands on ENEMY PIECE" do
+        it "returns false" do
+            my_board.get_square(5, 5).current_piece = opposite_color_bishop_on_landing_square
+            expect(my_bishop.lands_on_friendly_piece?(my_board.get_square(5, 5))).to be(false)
+            my_board.get_square(5, 5).current_piece = nil
+        end
+    end
+
+    context "when it lands on EMPTY SQUARE" do
+        it "returns false" do
+            expect(my_bishop.lands_on_friendly_piece?(my_board.get_square(5, 5))).to be(false)
+        end
+    end
+  end
 end

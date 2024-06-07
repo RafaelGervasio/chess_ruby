@@ -13,6 +13,7 @@ class King < Piece
 
     def valid_movement_pattern?(starting_square, ending_square)
         raise StandardError, "Can't have a nil square" if starting_square.nil? || ending_square.nil?
+        raise StandardError, "A piece must be in starting square" if starting_square.current_piece.nil?
 
         change_in_row = (ending_square.row - starting_square.row).abs
         change_in_col = (ending_square.col - starting_square.col).abs

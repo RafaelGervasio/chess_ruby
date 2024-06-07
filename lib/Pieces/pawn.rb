@@ -13,6 +13,7 @@ class Pawn < Piece
 
 	def valid_movement_pattern?(starting_square, ending_square)
 		raise StandardError, "Can't have nil squares" if starting_square.nil? || ending_square.nil?
+		raise StandardError, "A piece must be in starting square" if starting_square.current_piece.nil?
 	    
 	    change_in_row = (ending_square.row - starting_square.row).abs
 	    change_in_col = (ending_square.col - starting_square.col).abs
@@ -35,6 +36,7 @@ class Pawn < Piece
 
 	def jumps_over_piece?(board, starting_square, ending_square)
     	raise StandardError, "Can't have nil squares" if starting_square.nil? || ending_square.nil?
+    	raise StandardError, "A piece must be in starting square" if starting_square.current_piece.nil?
     	raise StandardError, "Jumps over piece can't be called for pawn if the movement pattern was invalid" if self.valid_movement_pattern?(starting_square, ending_square) == false
 
 	    change_in_row = (ending_square.row - starting_square.row).abs

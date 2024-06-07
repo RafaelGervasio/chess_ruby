@@ -11,6 +11,7 @@ class Rook < Piece
 
     def valid_movement_pattern?(starting_square, ending_square)
         raise StandardError, "Can't have nil squares" if starting_square.nil? || ending_square.nil?
+        raise StandardError, "A piece must be in starting square" if starting_square.current_piece.nil?
 
         horizontal_movement = ( ( starting_square.row != ending_square.row ) && 
             ( starting_square.col == ending_square.col ) )
@@ -23,6 +24,7 @@ class Rook < Piece
 
     def jumps_over_piece?(board, starting_square, ending_square)
         raise StandardError, "Can't have nil squares" if starting_square.nil? || ending_square.nil?
+        raise StandardError, "A piece must be in starting square" if starting_square.current_piece.nil?
         raise StandardError, "Jumps over piece can't be called for rook if the movement pattern was invalid" if self.valid_movement_pattern?(starting_square, ending_square) == false
 
         if starting_square.row == ending_square.row
@@ -54,6 +56,7 @@ class Rook < Piece
                 return false
             end
             jumps_over_piece_vertically?(board, starting_square, ending_square)
+            jumps_over_piece_vertically?(board, ending_square)
         end
     end
 end

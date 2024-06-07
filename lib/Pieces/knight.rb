@@ -7,12 +7,13 @@ class Knight < Piece
   
   
     def initialize(color, current_square)
-        super(color, 'knight', current_square, color == 'white'? WHITE_KNIGHT_UNICODE : BLACK_KNIGHT_UNICODE)
+        super(color, 'knight', current_square, color == 'white' ? WHITE_KNIGHT_UNICODE : BLACK_KNIGHT_UNICODE)
     end
 
 
     def valid_movement_pattern?(starting_square, ending_square)
-        raise StandardError, "can't have nil squares" if starting_square.nil? || ending_square.nil?
+        raise standarderror, "can't have nil squares" if starting_square.nil? || ending_square.nil?
+        raise standarderror, "a piece must be in starting square" if starting_square.current_piece.nil?
         
         moves_2_rows_1_col = ( ( (ending_square.row - starting_square.row).abs == 2) && 
             (ending_square.col - starting_square.col).abs == 1 )

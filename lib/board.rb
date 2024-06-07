@@ -121,7 +121,7 @@ class Board
   				column.append(row_array[col - 1])
   			end
 			
-			return column
+			return column 
 		else
 			raise StandardError, "get_col was called with unbounded values"
 		end
@@ -143,8 +143,23 @@ class Board
 	end
 
 
+	def each_piece(color)
+		(1..8).each do |row|
+			(1..8).each do |col|
+				if (not self.get_square(row, col).current_piece.nil?) && (self.get_square(row, col).current_piece.color == color)
+					yield self.get_square(row, col).current_piece
+					#some code
+				end
+			end
+		end
+	end
+
+
 end
 
 
-# board = Board.new()
-# board.display_board
+board = Board.new()
+
+# board.each_piece("white") do |piece|
+# 	puts piece.symbol
+# end
